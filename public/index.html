@@ -1,2 +1,163 @@
-<!-- Landing page HTML versi V3 siap deploy -->
-<!-- Copy isi index.html dari versi terakhir dengan popup CPA, countdown, scroll >80%, dan 5 testimonial -->
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOPALPHA – Herbalindo86</title>
+  <meta name="description" content="SOPALPHA 1 BOX ORIGINAL SUPLEMEN BIOBOOST IMMUNE BOOSTER dari Herbalindo86." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/scrollreveal"></script>
+</head>
+<body class="bg-gray-50 font-sans">
+
+<!-- Variabel konfigurasi CPA -->
+<script>
+  const REDIRECT_SERVER = "/api/r"; // pakai serverless API Vercel
+  const AFF_DEFAULT = "default_aff";
+  const TARGET_DEFAULT = "sopalpha-1box";
+</script>
+
+<!-- Hero Section -->
+<section class="bg-gradient-to-r from-green-600 to-green-500 text-white text-center py-20 px-6">
+  <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fade">SOPALPHA – Immune Booster</h1>
+  <p class="text-lg md:text-2xl mb-8">Original Suplemen BioBoost untuk kesehatan & daya tahan tubuh Anda</p>
+  <a href="javascript:void(0)" onclick="openCPAPopup()" class="bg-white text-green-600 font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-gray-100 transition transform hover:scale-105">Beli Sekarang</a>
+  <div class="mt-10 flex justify-center">
+    <img src="/images/produk.jpg" alt="Produk SOPALPHA" class="rounded-xl shadow-2xl w-80 animate-float"/>
+  </div>
+</section>
+
+<!-- Product Info -->
+<section class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-2 gap-12 items-center">
+  <div class="sr-left">
+    <img src="/images/box.jpg" alt="SOPALPHA Box" class="rounded-lg shadow-xl">
+  </div>
+  <div class="sr-right">
+    <h2 class="text-3xl font-bold mb-6">Kenapa Pilih SOPALPHA?</h2>
+    <ul class="space-y-3 text-gray-700 text-lg">
+      <li>✅ Suplemen herbal asli & berkualitas</li>
+      <li>✅ Membantu meningkatkan daya tahan tubuh</li>
+      <li>✅ Cocok untuk aktivitas sehari-hari</li>
+      <li>✅ Produk resmi dari Herbalindo86</li>
+    </ul>
+    <a href="javascript:void(0)" onclick="openCPAPopup()" class="mt-8 inline-block bg-green-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-green-700 transition transform hover:scale-105">Pesan Sekarang</a>
+  </div>
+</section>
+
+<!-- Testimonial -->
+<section class="bg-gray-100 py-16">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-10">Apa Kata Mereka?</h2>
+    <div class="testimonial-wrapper">
+      <div class="testimonial bg-white rounded-xl shadow-lg p-8 sr-bottom">“SOPALPHA membuat saya lebih bertenaga setiap hari.” – Ani</div>
+      <div class="testimonial bg-white rounded-xl shadow-lg p-8 sr-bottom hidden">“Badan terasa lebih fit dan jarang sakit.” – Budi</div>
+      <div class="testimonial bg-white rounded-xl shadow-lg p-8 sr-bottom hidden">“Suplemen herbal yang recommended!” – Clara</div>
+      <div class="testimonial bg-white rounded-xl shadow-lg p-8 sr-bottom hidden">“Membantu daya tahan tubuh saya meningkat.” – Dedi</div>
+      <div class="testimonial bg-white rounded-xl shadow-lg p-8 sr-bottom hidden">“Produk resmi, kualitas terjamin.” – Evi</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="text-center py-20 bg-gradient-to-r from-green-50 to-green-100">
+  <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Lebih Sehat dengan SOPALPHA?</h2>
+  <p class="text-gray-700 mb-8 text-lg">Dapatkan sekarang hanya di toko resmi Herbalindo86 di Tokopedia.</p>
+  <a href="javascript:void(0)" onclick="openCPAPopup()" class="bg-green-600 text-white font-semibold px-10 py-5 rounded-2xl shadow-lg hover:bg-green-700 transition transform hover:scale-110">Beli di Tokopedia</a>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 text-center py-6">
+  <p>&copy; 2025 Herbalindo86. Semua Hak Dilindungi.</p>
+</footer>
+
+<!-- Popup Microsite CPA -->
+<div id="cpa-popup" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center hidden">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-sm text-center popup-animate">
+    <h3 class="text-2xl font-bold mb-4 text-green-600">🎉 Promo Spesial!</h3>
+    <p class="text-gray-700 mb-4">Kamu akan diarahkan ke toko resmi Herbalindo86 di Tokopedia. Jika tidak otomatis, tekan tombol di bawah.</p>
+    <p><small>Redirect otomatis dalam <span id="cpa-count">3</span> detik...</small></p>
+    <a id="cpa-open" href="javascript:void(0)" onclick="manualRedirect()" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-green-700 transition block mt-4">Buka Toko Sekarang</a>
+    <button onclick="closePopup()" class="mt-4 text-sm text-gray-500 hover:text-gray-700">Tutup</button>
+  </div>
+</div>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+<script>
+// ScrollReveal & Animasi floating/fade
+ScrollReveal().reveal('.sr-left', { origin: 'left', distance: '50px', duration: 1000, delay: 200 });
+ScrollReveal().reveal('.sr-right', { origin: 'right', distance: '50px', duration: 1000, delay: 200 });
+ScrollReveal().reveal('.sr-bottom', { origin: 'bottom', distance: '50px', duration: 1000, delay: 200 });
+
+const style = document.createElement('style');
+style.innerHTML = `
+  .animate-float { animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} }
+  .animate-fade { animation: fadeIn 1s ease-in-out; }
+  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+  .popup-animate { animation: scaleIn 0.5s ease-out; }
+  @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+`;
+document.head.appendChild(style);
+
+// Fungsi popup CPA + countdown
+let countdownTimer;
+let popupShown = false;
+
+function openCPAPopup() {
+  if(popupShown) return;
+  popupShown = true;
+
+  const popup = document.getElementById('cpa-popup');
+  const countEl = document.getElementById('cpa-count');
+  let t = 3;
+  countEl.textContent = t;
+  popup.classList.remove('hidden');
+
+  countdownTimer = setInterval(() => {
+    t--;
+    countEl.textContent = t;
+    if(t <= 0) {
+      clearInterval(countdownTimer);
+      redirectCPA();
+    }
+  }, 1000);
+}
+
+function closePopup() {
+  document.getElementById('cpa-popup').classList.add('hidden');
+  clearInterval(countdownTimer);
+}
+
+function redirectCPA() {
+  window.location.href = `${REDIRECT_SERVER}?aff=${AFF_DEFAULT}&target=${TARGET_DEFAULT}`;
+}
+
+function manualRedirect() {
+  clearInterval(countdownTimer);
+  redirectCPA();
+}
+
+// Popup muncul saat scroll > 80% page
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+
+  if(scrollPercent > 80) {
+    openCPAPopup();
+  }
+});
+
+// Testimonial fade in/out
+const testimonials = document.querySelectorAll('.testimonial');
+let current = 0;
+function showNextTestimonial() {
+  testimonials[current].classList.add('hidden');
+  current = (current + 1) % testimonials.length;
+  testimonials[current].classList.remove('hidden');
+}
+setInterval(showNextTestimonial, 4000);
+</script>
+
+</body>
+</html>
