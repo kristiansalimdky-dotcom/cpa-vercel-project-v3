@@ -10,16 +10,16 @@
 </head>
 <body class="bg-gray-50 font-sans">
 
-<!-- Variabel konfigurasi CPA -->
+<!-- Link produk target -->
 <script>
-  const REDIRECT_SERVER = "https://www.tokopedia.com/herbalindo86/sopalpha-1-box-original-suplemen-bioboost-immune-booster-halal-bpom-bio-boost-sop-alpha-dewasa-1732362449360618825?extParam=whid%3D19688078%26src%3Dshop&aff_unique_id=&channel=others&chain_key=";
+  const PRODUCT_LINK = "https://www.tokopedia.com/herbalindo86/sopalpha-1-box-original-suplemen-bioboost-immune-booster-halal-bpom-bio-boost-sop-alpha-dewasa-1732362449360618825?extParam=whid%3D19688078%26src%3Dshop&aff_unique_id=&channel=others&chain_key=";
 </script>
 
 <!-- Hero Section -->
 <section class="bg-gradient-to-r from-green-600 to-green-500 text-white text-center py-20 px-6">
   <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-fade">SOPALPHA – Immune Booster</h1>
   <p class="text-lg md:text-2xl mb-8">Original Suplemen BioBoost untuk kesehatan & daya tahan tubuh Anda</p>
-  <a href="javascript:void(0)" onclick="openCPAPopup()" class="bg-white text-green-600 font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-gray-100 transition transform hover:scale-105">Beli Sekarang</a>
+  <a href="#" onclick="window.open(PRODUCT_LINK,'_blank'); openCPAPopup();" class="bg-white text-green-600 font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-gray-100 transition transform hover:scale-105">Beli Sekarang</a>
   <div class="mt-10 flex justify-center">
     <img src="/images/produk.jpg" alt="Produk SOPALPHA" class="rounded-xl shadow-2xl w-80 animate-float"/>
   </div>
@@ -38,7 +38,7 @@
       <li>✅ Cocok untuk aktivitas sehari-hari</li>
       <li>✅ Produk resmi dari Herbalindo86</li>
     </ul>
-    <a href="javascript:void(0)" onclick="openCPAPopup()" class="mt-8 inline-block bg-green-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-green-700 transition transform hover:scale-105">Pesan Sekarang</a>
+    <a href="#" onclick="window.open(PRODUCT_LINK,'_blank'); openCPAPopup();" class="mt-8 inline-block bg-green-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:bg-green-700 transition transform hover:scale-105">Pesan Sekarang</a>
   </div>
 </section>
 
@@ -60,7 +60,7 @@
 <section class="text-center py-20 bg-gradient-to-r from-green-50 to-green-100">
   <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Lebih Sehat dengan SOPALPHA?</h2>
   <p class="text-gray-700 mb-8 text-lg">Dapatkan sekarang hanya di toko resmi Herbalindo86 di Tokopedia.</p>
-  <a href="javascript:void(0)" onclick="openCPAPopup()" class="bg-green-600 text-white font-semibold px-10 py-5 rounded-2xl shadow-lg hover:bg-green-700 transition transform hover:scale-110">Beli di Tokopedia</a>
+  <a href="#" onclick="window.open(PRODUCT_LINK,'_blank'); openCPAPopup();" class="bg-green-600 text-white font-semibold px-10 py-5 rounded-2xl shadow-lg hover:bg-green-700 transition transform hover:scale-110">Beli di Tokopedia</a>
 </section>
 
 <!-- Footer -->
@@ -74,7 +74,7 @@
     <h3 class="text-2xl font-bold mb-4 text-green-600">🎉 Promo Spesial!</h3>
     <p class="text-gray-700 mb-4">Kamu akan diarahkan ke produk SOPALPHA di Tokopedia. Jika tidak otomatis, tekan tombol di bawah.</p>
     <p><small>Redirect otomatis dalam <span id="cpa-count">3</span> detik...</small></p>
-    <a id="cpa-open" href="javascript:void(0)" onclick="manualRedirect()" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-green-700 transition block mt-4">Buka Produk Sekarang</a>
+    <a id="cpa-open" href="#" onclick="manualRedirect()" class="bg-green-600 text-white font-semibold px-6 py-3 rounded-xl shadow hover:bg-green-700 transition block mt-4">Buka Produk Sekarang</a>
     <button onclick="closePopup()" class="mt-4 text-sm text-gray-500 hover:text-gray-700">Tutup</button>
   </div>
 </div>
@@ -83,7 +83,6 @@
 // ScrollReveal
 ScrollReveal().reveal('.sr-left', { origin: 'left', distance: '50px', duration: 1000, delay: 200 });
 ScrollReveal().reveal('.sr-right', { origin: 'right', distance: '50px', duration: 1000, delay: 200 });
-ScrollReveal().reveal('.sr-bottom', { origin: 'bottom', distance: '50px', duration: 1000, delay: 200 });
 
 // Styles tambahan
 const style = document.createElement('style');
@@ -91,9 +90,7 @@ style.innerHTML = `
   .animate-float { animation: float 4s ease-in-out infinite; }
   @keyframes float { 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-10px);} }
   .animate-fade { animation: fadeIn 1s ease-in-out; }
-  @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
   .popup-animate { animation: scaleIn 0.5s ease-out; }
-  @keyframes scaleIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
   .testimonial-wrapper { position: relative; height: 160px; }
   .testimonial { transition: opacity 1s ease-in-out; }
 `;
@@ -124,7 +121,7 @@ function closePopup() {
   clearInterval(countdownTimer);
 }
 function redirectCPA() {
-  window.open(REDIRECT_SERVER, "_blank");
+  window.open(PRODUCT_LINK, "_blank");
 }
 function manualRedirect() {
   clearInterval(countdownTimer);
