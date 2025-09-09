@@ -1,0 +1,12 @@
+
+{
+  "name": "cpa-vercel-project-v3",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {}
+}
